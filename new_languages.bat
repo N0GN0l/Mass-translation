@@ -16,7 +16,6 @@ echo %input%Choose = Button(root, text="%input%?", padx=20, command=%input%, bg=
 Rem storing button on the grid
 Rem check the row and column needed
 echo %input%Choose.grid(row=%row%, column=%column%)
-
 Rem Creating new page after button press
 echo        if i == %number%:
 echo            %country% = Toplevel()
