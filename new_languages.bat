@@ -1,16 +1,23 @@
 @echo off
+Rem inputs
 set /P row= please choose a row: 
 set /P column= please choose a column: 
 set /P input= please choose a language: 
 set /p country= please input country of origin: 
-set /P languageModule= please input the language as a usable module for google translate
+Rem use language_list.py ti check for languages
+set /P languageModule= please input the language as a usable module for google translate: 
 set /P number= please input the language number: 
+Rem button creation
 echo def %input%():
 echo    languages.append(%number%)
 echo    print(languages)
 echo    %input%Choose['state'] = DISABLED
 echo %input%Choose = Button(root, text="%input%?", padx=20, command=%input%, bg="grey",)
+Rem storing button on the grid
+Rem check the row and column needed
 echo %input%Choose.grid(row=%row%, column=%column%)
+
+Rem Creating new page after button press
 echo        if i == %number%:
 echo            %country% = Toplevel()
 echo            %country%.title("%language% email")
