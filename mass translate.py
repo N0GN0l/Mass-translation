@@ -1,4 +1,5 @@
 import googletrans
+import tkinter
 from googletrans import Translator
 from tkinter import *
 
@@ -65,16 +66,29 @@ italianChoose = Button(root, text="Italian?", padx=20, command=italian, bg="grey
 italianChoose.grid(row=15, column=35)
 
 
+def japanese():
+    languages.append(5)
+    print(languages)
+    japaneseChoose['state'] = DISABLED
+
+
+japaneseChoose = Button(root, text="japanese?", padx=20, command=japanese, bg="grey", fg="red")
+
+japaneseChoose.grid(row=15, column=40)
+
+
 def outputEmail():
     for i in languages:
         if i == 1:
             china = Toplevel()
             china.title("Chinese email")
             china.geometry("1000x100")
+
             def focusText(event):
                 chineseOutput.config(state='normal')
                 chineseOutput.focus()
                 chineseOutput.config(state='disabled')
+
             chineseOutput = Text(china, borderwidth=0)
             chineseOutput.insert(1.0, translater.translate(email.get(), src="en", dest="zh-cn").text)
             chineseOutput.pack()
@@ -86,10 +100,12 @@ def outputEmail():
             spain = Toplevel()
             spain.title("Spanish email")
             spain.geometry("1000x100")
+
             def focusText(event):
                 spanishOutput.config(state='normal')
                 spanishOutput.focus()
                 spanishOutput.config(state='disabled')
+
             spanishOutput = Text(spain, borderwidth=0)
             spanishOutput.insert(1.0, translater.translate(email.get(), src="en", dest="es").text)
             spanishOutput.pack()
@@ -118,10 +134,12 @@ def outputEmail():
             italy = Toplevel()
             italy.title("Italian email")
             italy.geometry("1000x100")
+
             def focusText(event):
                 italianOutput.config(state='normal')
                 italianOutput.focus()
                 italianOutput.config(state='disabled')
+
             italianOutput = Text(italy, borderwidth=0)
             italianOutput.insert(1.0, translater.translate(email.get(), src="en", dest="it").text)
             italianOutput.pack()
@@ -129,6 +147,22 @@ def outputEmail():
             italianOutput.configure(state="disabled")
 
             italianOutput.bind('<Button-1>', focusText)
+
+        if i == 5:
+            japan = Toplevel()
+            japan.title("japanese email")
+            japan.geometry("1000x100")
+
+            def focusText(event):
+                japaneseOutput.config(state='normal')
+                japaneseOutput.focus()
+                japaneseOutput.config(state='disabled')
+
+            japaneseOutput = Text(japan, borderwidth=0)
+            japaneseOutput.insert(1.0, translater.translate(email.get(), src="en", dest="ja").text)
+            japaneseOutput.pack()
+            japaneseOutput.configure(state="disabled")
+            japaneseOutput.bind('<Button-1>', focusText)
 
 
 # creating a button for output
